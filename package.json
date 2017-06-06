@@ -1,28 +1,25 @@
 {
-  "name": "vue-demo",
-  "version": "1.0.0",
-  "description": "vue demo",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lusencn/vue-demo.git"
-  },
-  "keywords": [
-    "todo"
-  ],
-  "author": "lusen",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lusencn/vue-demo/issues"
-  },
-  "homepage": "https://github.com/lusencn/vue-demo#readme",
-  "dependencies": {
-  },
-  "devDependencies": {
-  }
+    "name": "vue-demo",
+    "version": "1.0.0",
+    "description": "vue demo",
+    "main": "index.js",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lusencn/vue-demo.git"
+    },
+    "keywords": [
+        "todo"
+    ],
+    "author": "lusen",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/lusencn/vue-demo/issues"
+    },
+    "homepage": "https://github.com/lusencn/vue-demo#readme",
+    "dependencies": {},
+    "devDependencies": {}
 }
