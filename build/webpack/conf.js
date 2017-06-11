@@ -1,5 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 const webpack = require('webpack');
 const envConfig = equire('../env');
 const config = require('../' + envConfig.env);
@@ -11,7 +12,7 @@ const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 // 页面入口文件配置
 const entry = {
-    index: 'index.js',
+    index: path.resolve(config.dir.src, 'index.js'),
     lib: ['vue']
 }
 
@@ -38,6 +39,14 @@ module.exports = {
             loader: 'vue-loader'
         }]
     },
+    resolve: {
+        alias: {
+            'fe-util': 'lib/util',
+            'vue-widget': 'lib/widget'
+        },
+        extensions: ['.js', '.jsx', '.vue'],
+        modules: [config.dir.src, 'node_modules']
+    },
     plugins: (() => {
         let arr = [
             // 将chunks中对应的entry所引用的公共文件提取出来，chunk名为common
@@ -49,7 +58,7 @@ module.exports = {
                 name: 'lib',
                 filename: 'lib.js',
                 chunks: ['lib', 'common']
-            }),
+            })
             // 将JS代码中引用的CSS文件，合并提取成一个CSS文件
             /*new ExtractTextPlugin(
                 debug ? '[name].css' : '[name]/[contenthash:8].css',
