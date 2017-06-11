@@ -1,12 +1,16 @@
 <template>
     <div class="w-grid-ct" :style="ctStyle">
-        {this.headerView()}
+        <div className="w-grid-table" style="tableStyle">
+            {this.rowView({}, -1)}
+        </div>
         {this.bodyView()}
     </div>
 </template>
 
 
 <script>
+import {isEmpty, isFunction, isNumber} from 'fe-util';
+
 export default {
     props: {
         // 列表border宽度
@@ -42,28 +46,13 @@ export default {
         style: Object,
         // 列表容器宽度
         width: Number
-
     },
     data() {
-        // 表头悬浮显示时，表体容器样式
-        this.isFixHeader && (this.fixedCtStyle = {
-            top: (headerHeight || 30) + 'px'
-        });
+        _initStyle();
 
-        // 表头/表体table样式
-        this.tableStyle = {
-            width: width,
-            borderSpacing: borderSpacing || 1
-        };
         return {
             // 列表容器样式
-            ctStyle: Object.assign({}, this.isFixHeader ? {
-                    position: 'relative'
-                } : null,
-                style, {
-                    width: this.width
-                }
-            )
+            ctStyle: this.ctStyle
         }
     },
     //--------------------------------------------------------------------------
@@ -96,11 +85,10 @@ export default {
     _calColWidth() {
         this.calColWidthVal = 'auto';
 
-        let {borderSpacing, columns, width} = this.props;
-        if (!width || !isNumber(width)) {
+        if (!this.width || !isNumber(this.width)) {
             return;
         }
-        if (columns == null) {
+        if (this.columns == null) {
             return;
         }
 
@@ -109,8 +97,8 @@ export default {
         // 未设置宽度的列的数量
         let noWidthCnt = 0;
         // 用于平均计算的宽度值
-        let minusResult = width - (columns.length + 1) * (borderSpacing || 1);
-        columns.some(column => {
+        let minusResult = this.width - (this.columns.length + 1) * (this.borderSpacing || 1);
+        this.columns.some(column => {
             let itemWidth = column.width;
             if (!itemWidth) {
                 noWidthCnt++;
@@ -125,7 +113,7 @@ export default {
         });
 
         if (!isNoCal && noWidthCnt) {
-            this.calColWidthVal = minusResult / noWidthCnt
+            this.calColWidthVal = minusResult / noWidthCnt;
         }
         (this.calColWidthVal <= 0) && (this.calColWidthVal = 'auto');
     }
