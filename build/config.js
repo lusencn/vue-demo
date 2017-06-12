@@ -14,8 +14,14 @@ module.exports = {
         // JS/CSS构建后发布到到目录（绝对路径）
         release: path.resolve(projectDir, releaseFolder),
         // JS/CSS源文件目录
-        src: path.resolve(projectDir, 'src')
+        src: path.resolve(projectDir, 'src'),
+        // 模板源文件目录
+        tpl: path.resolve(projectDir, 'src/tpl')
     },
     // JS/CSS构建后发布到的文件夹
-    releaseFolder: releaseFolder
+    releaseFolder: releaseFolder,
+    // 图片构建后发布到的文件夹
+    imgFolder: 'images',
+    // 字体构建后发布到的文件夹
+    fontFolder: 'fonts'
 }
