@@ -18,8 +18,10 @@ module.exports = {
         // 模板源文件目录
         tpl: path.resolve(projectDir, 'src/tpl')
     },
-    // JS/CSS构建后发布到的文件夹
+    // JS构建后发布到的文件夹
     releaseFolder: releaseFolder,
+    // CSS构建后发布到到文件夹
+    cssFolder: 'css',
     // 图片构建后发布到的文件夹
     imgFolder: 'images',
     // 字体构建后发布到的文件夹

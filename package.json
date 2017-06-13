@@ -6,7 +6,12 @@
   "directories": {
     "test": "test"
   },
-  "scripts": {},
+  "scripts": {
+    "build-prop": "cross-env NODE_ENV=production && npm run build",
+    "build-dev": "cross-env NODE_ENV=development && npm run build",
+    "build": "webpack --config ./build/webpack/conf.js --progress --colors --display-error-details",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --port 8081 --config ./build/webpack/conf.js --devtool eval --progress --colors --hot --inline"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lusencn/vue-demo.git"
@@ -35,7 +40,9 @@
     "extract-text-webpack-plugin": "^2.1.2",
     "html-webpack-plugin": "^2.28.0",
     "url-loader": "^0.5.8",
+    "vue-loader": "^12.2.1",
     "vue-style-loader": "^3.0.1",
+    "vue-template-compiler": "^2.3.4",
     "webpack": "^2.6.1",
     "webpack-dev-server": "^2.4.5"
   }

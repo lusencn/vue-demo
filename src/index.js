@@ -1,9 +1,9 @@
 import Vue from 'vue';
-//import TodoList from './components/todo/TodoList'
-import TodoList from './TodoList';
+import TodoList from 'component/todo/TodoList';
 
 new Vue({
-    el: '#mainCtId'
-    template: '<TodoList/>',
-    components: { TodoList }
+    el: '#mainCtId',
+    render: h => h(TodoList)
+    //template: '<TodoList/>',
+    //components: { TodoList }
 })
