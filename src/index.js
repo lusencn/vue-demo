@@ -3,7 +3,6 @@ import TodoList from 'component/todo/TodoList';
 
 new Vue({
     el: '#mainCtId',
-    render: h => h(TodoList)
-    //template: '<TodoList/>',
-    //components: { TodoList }
+    template: '<TodoList/>',
+    components: { TodoList }
 })

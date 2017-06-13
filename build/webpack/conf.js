@@ -84,7 +84,8 @@ module.exports = {
     resolve: {
         alias: {
             'fe-util': 'lib/util',
-            'vue-widget': 'lib/widget'
+            'vue-widget': 'lib/widget',
+            'vue$': 'vue/dist/vue.common.js'
         },
         extensions: [
             '.js', '.jsx', '.vue'
