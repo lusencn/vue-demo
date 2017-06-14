@@ -7,10 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "build-prop": "cross-env NODE_ENV=production && npm run build",
-    "build-dev": "cross-env NODE_ENV=development && npm run build",
+    "build-prod": "cross-env NODE_ENV=production npm run build",
+    "build-dev": "cross-env NODE_ENV=development npm run build",
     "build": "webpack --config ./build/webpack/conf.js --progress --colors --display-error-details",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --port 8081 --config ./build/webpack/conf.js --devtool eval --progress --colors --hot --inline"
+    "dev": "webpack-dev-server --port 8081 --config ./build/webpack/conf.js --devtool eval --progress --colors --hot --inline"
   },
   "repository": {
     "type": "git",

@@ -4,7 +4,7 @@ const config = require('./config');
 const domain = '127.0.0.1:8081';
 
 module.exports = Object.assign(config, {
-    debug: true,
+    debug: false,
     // html页面引用JS/CSS文件的前缀路径
     resUrlPre: `//${domain}/${config.releaseFolder}/`,
     // 图片文件的前缀路径
