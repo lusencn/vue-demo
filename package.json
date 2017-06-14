@@ -10,7 +10,7 @@
     "build-prod": "cross-env NODE_ENV=production npm run build",
     "build-dev": "cross-env NODE_ENV=development npm run build",
     "build": "webpack --config ./build/webpack/conf.js --progress --colors --display-error-details",
-    "dev": "webpack-dev-server --port 8081 --config ./build/webpack/conf.js --devtool eval --progress --colors --hot --inline"
+    "dev": "webpack-dev-server --port 8081 --config ./build/webpack/conf.js --devtool eval --progress --colors --compress --hot --inline"
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,7 @@
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.2",
     "html-webpack-plugin": "^2.28.0",
+    "style-loader": "^0.18.2",
     "url-loader": "^0.5.8",
     "vue-loader": "^12.2.1",
     "vue-style-loader": "^3.0.1",

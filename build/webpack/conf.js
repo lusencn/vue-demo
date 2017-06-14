@@ -49,9 +49,10 @@ module.exports = {
         }, {
             // 将CSS构建合并到一个文件
             test: /\.css$/,
-            loader: ExtractTextPlugin.extract([
-                'css-loader', 'style-loader'
-            ])
+            loader: ExtractTextPlugin.extract({
+                use: 'css-loader',
+                fallback: 'style-loader'
+            })
         }, {
             test: /\.vue$/,
             loader: 'vue-loader',
