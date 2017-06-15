@@ -13,8 +13,12 @@
 
 <script>
 import Grid from 'vue-widget/grid/Grid';
+import {listReq} from 'api/todo';
 
 export default {
+    created() {
+        this.records = listReq();
+    },
     data() {
         return {
             columns: [{

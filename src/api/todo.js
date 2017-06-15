@@ -36,7 +36,7 @@ export let listReq = (state = {}) => {
             result.success = false;
         }
         return result;
-    }, response => {
+    }, error => {
         return { success : false };
     });
 };

@@ -8,7 +8,7 @@ const releaseFolder = 'dist';
 module.exports = {
     dir: {
         // JS/CSS构建后发布html目录（绝对路径）
-        html: path.resolve(__dirname, '../koa-demo/server/views/res'),
+        html: path.resolve(projectDir, '../koa-demo/server/views/res'),
         // 工程目录（绝对路径）
         project: projectDir,
         // JS/CSS构建后发布到到目录（绝对路径）

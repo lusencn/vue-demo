@@ -12,7 +12,7 @@ const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 // 页面入口文件配置
 const entry = {
-    index: path.resolve(config.dir.src, './index.js')
+    todo: path.resolve(config.dir.src, './index.js')
 }
 
 // 文件路径是否带上chunkhash信息
@@ -132,7 +132,7 @@ module.exports = {
             }));
         });
 
-        /*Object.keys(entry).forEach(chunk => {
+        Object.keys(entry).forEach(chunk => {
             arr.push(new HtmlWebpackPlugin({
                 chunks: [chunk],
                 filename: path.resolve(config.dir.html, `${chunk}_css.html`),
@@ -149,7 +149,7 @@ module.exports = {
                 inject: false,
                 template: path.resolve(config.dir.tpl, 'js.html')
             }));
-        });*/
+        });
 
         return arr;
     })()
