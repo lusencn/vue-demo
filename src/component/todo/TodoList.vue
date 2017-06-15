@@ -17,7 +17,10 @@ import {listReq} from 'api/todo';
 
 export default {
     created() {
-        this.records = listReq();
+        listReq().then(result => {
+            console.log(result);
+            result.true && (this.records = result.records);
+        });
     },
     data() {
         return {

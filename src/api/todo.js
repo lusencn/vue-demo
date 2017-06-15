@@ -22,6 +22,7 @@ export let listReq = (state = {}) => {
         url : URL.list,
         data : params
     }).then(response => {
+        console.log(response);
         let result = {
             success: true
         };
@@ -36,7 +37,7 @@ export let listReq = (state = {}) => {
             result.success = false;
         }
         return result;
-    }, error => {
+    }).catch(error => {
         return { success : false };
     });
 };
