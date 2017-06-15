@@ -1,11 +1,10 @@
 import isString from '../is/isString';
 import axios from 'axios';
 
-
 /**
  * Ajax Post请求
  */
-var post = function(params = {}) {
+const post = function(params = {}) {
 	if (!isString(params)) {
 		params = {
 			method: 'post',
