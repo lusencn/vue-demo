@@ -1,11 +1,10 @@
 import isString from '../is/isString';
-import ajaxEventSource from './event';
 import axios from 'axios';
 
 /**
  * Ajax Get请求
  */
-let get = function(params = {}) {
+const get = function(params = {}) {
 	if (!isString(params)) {
 		params = {
 			method: 'get',
