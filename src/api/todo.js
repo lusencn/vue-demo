@@ -22,7 +22,6 @@ export let listReq = (state = {}) => {
         url : URL.list,
         data : params
     }).then(response => {
-        console.log(response);
         let result = {
             success: true
         };

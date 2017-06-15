@@ -7,7 +7,6 @@
             :width="width"
         />
     </div>
-
 </template>
 
 
@@ -16,12 +15,6 @@ import Grid from 'vue-widget/grid/Grid';
 import {listReq} from 'api/todo';
 
 export default {
-    created() {
-        listReq().then(result => {
-            console.log(result);
-            result.true && (this.records = result.records);
-        });
-    },
     data() {
         return {
             columns: [{
@@ -33,10 +26,17 @@ export default {
                 label: '内容',
                 bodyCellStyle: {'textAlign': 'left'}
             }],
-            isFixHeader: true,
             records: [],
+            isFixHeader: true,
             width: 800
         }
+    },
+    created() {
+        listReq().then(result => {
+            this.records.splice(0, this.records.length);
+            result.success && result.records.forEach(record =>
+                this.records.push(record));
+        });
     },
     components: {
         Grid
