@@ -27,7 +27,7 @@ export default {
                 bodyCellStyle: {'textAlign': 'left'}
             }],
             isFixHeader: true,
-            records: [{title: 'n1', content: "c1"}, {title: 'n1', content: "c1"}],
+            records: [],
             width: 800
         }
     },
