@@ -13,7 +13,7 @@ const get = function(params = {}) {
 		}
 	}
 
-	return reqwest(params).then(response => {
+	return axios(params).then(response => {
 		return response;
 	}, ...args => {
 		return args[0];
