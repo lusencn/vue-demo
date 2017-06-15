@@ -142,7 +142,7 @@ module.exports = {
 
             arr.push(new HtmlWebpackPlugin({
                 chunks: [
-                    'lib', 'common', chunk
+                    'lib', chunk
                 ],
                 filename: path.resolve(config.dir.html, `${chunk}_js.html`),
                 inlineNames: ['jsInline'],
