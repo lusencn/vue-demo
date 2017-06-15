@@ -14,9 +14,9 @@ const get = function(params = {}) {
 	}
 
 	return axios(params).then(response => {
+		return response.data;
+	}, response => {
 		return response;
-	}, ...args => {
-		return args[0];
 	});
 }
 export { get };
