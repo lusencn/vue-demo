@@ -1,5 +1,5 @@
 <template>
-    <ul className="w-grid-tr">
+    <ul class="w-grid-tr">
         <li
             v-for="column in columns"
             :class="isHeader ? 'w-grid-th' : 'w-grid-td'"

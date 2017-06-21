@@ -17,7 +17,7 @@
                     v-for="(record, index) in records"
                     :calColWidthVal="calColWidthVal"
                     :columns="columns"
-                    :key="'gridRow_' + index"
+                    :key="'gridRow_' + record.id"
                     :record="record"
                     :rowIndex="index"
                 />
