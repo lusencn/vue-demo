@@ -1,6 +1,7 @@
 <template>
     <div class='todo-ct fixed'>
         <grid
+            ref="grid"
             :columns="columns"
             :isFixHeader="isFixHeader"
             :records="records"
@@ -13,14 +14,16 @@
             :recordCnt="allRecordsCnt"
             :style="{width: width + 'px'}"
         />
+        <AreaMask :loading="loading" />
     </div>
 </template>
 
 
 <script>
 import {listReq} from 'api/todo';
+import AreaMask from 'vue-widget/AreaMask';
 import Grid from 'vue-widget/grid/Grid';
-import Pagn from 'vue-widget/pagn/Pagn';
+import Pagn from 'vue-widget/Pagn';
 
 export default {
     props: {
@@ -51,6 +54,7 @@ export default {
                 label: '内容',
                 bodyCellStyle: {'textAlign': 'left'}
             }],
+            loading: false,
             pageSize: pageSize,
             records: [],
             isFixHeader: true,
@@ -60,32 +64,52 @@ export default {
         }
     },
     created() {
+        this.loading = true;
         listReq({
             pageSize: this.pageSize
         }).then(result => {
+            this.loading = false;
             if (result.success) {
                 this.currPage = 1;
                 this.allRecordsCnt = result.total;
                 this.records.splice(0, this.records.length);
                 result.records.forEach(record => this.records.push(record));
             }
+            this.onLoadingChange();
         });
     },
     components: {
-        Grid, Pagn
+        AreaMask, Grid, Pagn
+    },
+    computed: {
     },
     methods: {
+        /**
+         * 列表数据加载状态变化
+         */
+        onLoadingChange() {
+            if (this.loading) {
+    			return;
+    		}
+            this.$refs.grid.scrollTo(0);
+        },
+        /**
+         * 列表翻页
+         */
         onPagnChange(nextPagnNo) {
+            this.loading = true;
             listReq({
                 startIndex: (nextPagnNo - 1) * this.pageSize,
                 pageSize: this.pageSize
             }).then(result => {
+                this.loading = false;
                 if (result.success) {
                     this.currPage = nextPagnNo;
                     this.allRecordsCnt = result.total;
                     this.records.splice(0, this.records.length);
                     result.records.forEach(record => this.records.push(record));
                 }
+                this.onLoadingChange();
             });
         }
     }

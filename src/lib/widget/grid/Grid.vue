@@ -11,9 +11,16 @@
         <div
             :class="isFixHeader ? 'w-grid-fix' : null"
             :style="isFixHeader ? fixedCtStyle : null"
+            ref="fixBodyCt"
         >
             <div class="w-grid-table" :style="tableStyle">
+                <div v-if="isEmpty(records)">
+                    <div className="w-grid-empty">
+                        <i className="i-empty"></i>
+                    </div>
+                </div>
                 <grid-row
+                    v-else
                     v-for="(record, index) in records"
                     :calColWidthVal="calColWidthVal"
                     :columns="columns"
@@ -80,6 +87,33 @@ export default {
     },
     //--------------------------------------------------------------------------
     methods: {
+        isEmpty,
+
+        /**
+    	 * 滚动到指定位置
+    	 */
+        scrollTo(pos) {
+            try {
+                if (!isEmpty(pos)) {
+                    let el = this.$refs.fixBodyCt;
+                    el && (el.scrollTop = pos);
+                }
+            } catch (e) {}
+        },
+
+        /**
+    	 * 获取滚动条位置
+    	 */
+        getScrollTop() {
+            let el = this.$refs.fixBodyCt;
+            return el
+                ? (el.scrollTop || 0)
+                : 0;
+        },
+
+        /**
+         * 样式初始化
+         */
         _initStyle() {
             // 列表容器样式
             this.ctStyle = Object.assign({}, this.isFixHeader ? {
@@ -101,6 +135,7 @@ export default {
 
             this._calColWidth();
         },
+
         /**
     	 * 计算未设置width值的列的宽度（如果有列设置width为百分数，或width设置不规范，则不执行该计算）
     	 */

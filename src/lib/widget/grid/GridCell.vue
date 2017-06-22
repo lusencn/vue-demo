@@ -1,6 +1,6 @@
 <template v-if="show" >
-    <div className="w-grid-box" :style="ctStyle" :title="title">
-        <div className="w-grid-content" :style="contentStyle">{{content}}</div>
+    <div class="w-grid-box" :style="ctStyle" :title="title">
+        <div class="w-grid-content" :style="contentStyle">{{content}}</div>
     </div>
 </template>
 
